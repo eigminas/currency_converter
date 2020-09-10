@@ -4,7 +4,7 @@ import axios from "axios";
 export default class Convert extends Component {
   constructor(props) {
     super(props);
-    this.state = { from: "", to: "", amount: 0, result: 0.0, show: false };
+    this.state = { from: "AUD", to: "AUD", amount: 0, result: 0.0, show: false };
   }
   onChange = e => {
     this.setState({
@@ -27,7 +27,7 @@ export default class Convert extends Component {
         })
       )
       .catch(err => console.warn(err));
-    e.target.reset();
+    /*e.target.reset();*/
   };
 
   render() {
@@ -38,7 +38,7 @@ export default class Convert extends Component {
           <Currency onChange={this.onChange} label='to' />
           <div>
             <label htmlFor='amount'>Amount</label>
-            <input onChange={this.onChange} className='data-block' type='text' id='amount' name='amount' />
+            <input onChange={this.onChange} className='data-block' type='number' id='amount' name='amount' />
             <input id='convert' type='submit' value='Convert' />
           </div>
         </form>
