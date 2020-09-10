@@ -9,6 +9,7 @@ export default class Convert extends Component {
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value,
+      show: false,
     });
   };
 
@@ -26,6 +27,7 @@ export default class Convert extends Component {
         })
       )
       .catch(err => console.warn(err));
+    e.target.reset();
   };
 
   render() {

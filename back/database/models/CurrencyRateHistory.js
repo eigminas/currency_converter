@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const CurrencyRateSchema = new mongoose.Schema({
+const CurrencyHistorySchema = new mongoose.Schema({
   currency: {
     type: String,
     required: true,
@@ -15,4 +15,4 @@ const CurrencyRateSchema = new mongoose.Schema({
   },
 });
 
-module.exports = CurrencyRate = mongoose.model("rates", CurrencyRateSchema);
+module.exports = CurrencyRateHistory = mongoose.model("ratesHistory", CurrencyHistorySchema);

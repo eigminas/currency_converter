@@ -3,6 +3,7 @@ const router = express.Router();
 const request = require("request"); // used to consume LB api
 var parseString = require("xml2js").parseString; // used to access data from xml
 const CurrencyRate = require("../../database/models/CurrencyRate");
+const CurrencyRateHistory = require("../../database/models/CurrencyRateHistory");
 
 // @route GET api/data
 // @desc get data from external api
@@ -19,9 +20,7 @@ router.get("/", async (req, res) => {
       if (error) console.error(error);
 
       parseString(body, async (err, result) => {
-        //console.dir(result.FxRates.FxRate[1].CcyAmt);
         data = result.FxRates.FxRate;
-        //console.dir(data[0].CcyAmt[1].Ccy[0]);
 
         for (var i = 0; i < data.length; i++) {
           let name = data[i].CcyAmt[1].Ccy[0];
@@ -30,8 +29,9 @@ router.get("/", async (req, res) => {
           const fields = {};
           fields.currency = name;
           fields.rate = exrate;
-
           let rate = await CurrencyRate.findOne({ currency: name });
+          let history = CurrencyRateHistory(fields);
+          await history.save();
           if (rate) {
             // update
             rate = await CurrencyRate.findOneAndUpdate({ currency: name }, { $set: fields }, { new: true });
