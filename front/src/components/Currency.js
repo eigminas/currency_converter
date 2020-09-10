@@ -22,7 +22,6 @@ export default class Currency extends Component {
     return (
       <div>
         <label htmlFor={this.props.label}>{this.props.label}</label>
-        {/*<input name={this.props.label} onChange={this.props.onChange} list='currencies' className='data-block' />*/}
         <select onChange={this.props.onChange} id='currencies' name={this.props.label}>
           {list.map(item => (
             <option key={index++} value={item}>

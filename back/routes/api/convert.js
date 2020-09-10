@@ -4,14 +4,14 @@ const CurrencyRate = require("../../database/models/CurrencyRate");
 const UserActivity = require("../../database/models/UserActivity");
 
 // @route GET api/convert/:from/:to
-// @desc get data from external api
+// @desc convert currency
 // @access Public
 router.get("/convert/:from/:to/:amount", async (req, res) => {
   try {
     const from = await CurrencyRate.findOne({ currency: req.params.from });
     const to = await CurrencyRate.findOne({ currency: req.params.to });
 
-    let result = (from.rate / to.rate) * req.params.amount;
+    let result = (to.rate / from.rate) * req.params.amount;
 
     const fields = {};
     fields.from = from.currency;

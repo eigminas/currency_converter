@@ -23,7 +23,8 @@ export default class Convert extends Component {
       .get(`http://localhost:5000/api/operations/convert/${from}/${to}/${amount}`)
       .then(res =>
         this.setState({
-          result: res.data.toPrecision(3),
+          // result: res.data.toPrecision(3),
+          result: res.data,
         })
       )
       .catch(err => console.warn(err));

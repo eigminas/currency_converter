@@ -15,4 +15,4 @@ const CurrencyHistorySchema = new mongoose.Schema({
   },
 });
 
-module.exports = CurrencyRateHistory = mongoose.model("ratesHistory", CurrencyHistorySchema);
+module.exports = CurrencyRateHistory = mongoose.model("history", CurrencyHistorySchema);
