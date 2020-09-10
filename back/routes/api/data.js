@@ -37,13 +37,29 @@ router.get("/", async (req, res) => {
             rate = await CurrencyRate.findOneAndUpdate({ currency: name }, { $set: fields }, { new: true });
           }
           // create
-          rate = new CurrencyRate(fields);
-          await rate.save();
+          else {
+            rate = new CurrencyRate(fields);
+            await rate.save();
+          }
         }
       });
 
       res.json(body);
     });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route GET api/data/currencies
+// @desc get all the currencies
+// @access Public
+router.get("/currencies", async (req, res) => {
+  try {
+    let currencies = await CurrencyRate.find().select("currency").select("-_id");
+    currencies = currencies.map(currency => currency.currency);
+    res.json(currencies);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server error");

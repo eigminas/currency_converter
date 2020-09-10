@@ -10,6 +10,10 @@ connectDB();
 // init middleware
 app.use(express.json({ extended: false }));
 app.use(xmlparser());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 app.get("/", (req, res) => res.send("API Running"));
 

@@ -1,0 +1,32 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+.container{
+  width: 100%;
+  text-align: center;
+}
+form{
+  display: inline-flex;
+  margin-top: 200px;
+}
+input{
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  background-color: ;
+}
+datalist{
+  width: 50%;
+  height: 200px;
+  overflow: scroll;
+}
+
+input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+p{
+  margin-top: 20px;
+}
