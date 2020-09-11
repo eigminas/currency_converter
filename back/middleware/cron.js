@@ -4,7 +4,7 @@ var parseString = require("xml2js").parseString; // used to access data from xml
 const CurrencyRate = require("../database/models/CurrencyRate");
 const CurrencyRateHistory = require("../database/models/CurrencyRateHistory");
 updateDB = () => {
-  cron.schedule("* * 4 * * *", () => {
+  cron.schedule("* * 5 * * *", () => {
     try {
       console.log("database updated");
       const options = {

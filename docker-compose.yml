@@ -1,15 +1,18 @@
-version: '3'
-services: 
-    app:
-        container_name: docker-currency-converter
-        restart: always
-        build: .
-        port:
-            - '80:5000'
-        links:
-            - mongo
-    mongo:
-        container_name: mongo
-        image: mongo
-        ports:
-            - '27017:27017'
+version: '2'
+services:
+  ui:
+    build: ./ui
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
+  api:
+    build: ./api
+    ports:
+      - '5000:5000'
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'

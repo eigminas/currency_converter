@@ -38,8 +38,8 @@ export default class Convert extends Component {
           <Currency onChange={this.onChange} label='from' />
           <Currency onChange={this.onChange} label='to' />
           <div>
-            <label htmlFor='amount'>Amount</label>
-            <input onChange={this.onChange} className='data-block' type='number' id='amount' name='amount' />
+            <label htmlFor='amount'>amount</label>
+            <input onChange={this.onChange} className='data-block' type='number' id='amount' name='amount' min='0' />
             <input id='convert' type='submit' value='Convert' />
           </div>
         </form>
