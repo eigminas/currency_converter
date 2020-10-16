@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
-  const db = "mongodb+srv://eigminas:862065851@currencies.v9xx6.mongodb.net/currencies?retryWrites=true&w=majority";
+  const db = "mongodb+srv://eigminas:<>@currencies.v9xx6.mongodb.net/currencies?retryWrites=true&w=majority";
   //const db = "mongodb://mongo:27017/currencies";
   try {
     await mongoose.connect(db, {
